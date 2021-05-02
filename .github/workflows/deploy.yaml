@@ -18,10 +18,10 @@ jobs:
         cp README.md ./tmp/README.md
 
     - name: Publish to Docs Site
-      uses: seanmiddleditch/gha-publish-to-git@master
+      uses: seanmiddleditch/gha-publish-to-git@v2
       with:
         branch: master
-        github_token: "${{ secrets.GITHUB_SECRET_TOKEN  }}"
+        github_token: "${{ secrets.TOKEN  }}"
         source_folder: tmp/
         target_folder: docs/demo-docs-source
       if: success() && github.event == 'push'
