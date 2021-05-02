@@ -18,11 +18,11 @@ jobs:
         cp README.md ./tmp/README.md
 
     - name: Publish to Docs Site
-      uses: seanmiddleditch/gha-publish-to-git@v2
+      uses: seanmiddleditch/gha-publish-to-git@master
       with:
         repository: playgrounddev/demo-docs
         branch: master
-        github_token: "${{ secrets.TOKEN  }}"
+        github_pat: "${{ secrets.TOKEN  }}"
         source_folder: tmp/
         target_folder: docs/demo-docs-source
       if: success() && github.event == 'push'
