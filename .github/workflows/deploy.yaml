@@ -14,15 +14,15 @@ jobs:
     
     - name: Generate Docs
       run: |
-        cp README.md GENERATE_README.md
+        cp README.md demo-docs-source.md
 
     - name: Publish to Docs Site
       uses: adrianjost/files-sync-action@v1.4.1
       with:
         COMMIT_MESSAGE: Update Docs
         FILE_PATTERNS: |
-          ^GENERATE_README.*
+          ^demo-docs-source.md$
         TARGET_REPOS: |
-          playgrounddev/demo-docs
-        TARGET_ROOT: /docs/demo-docs-source/
+          playgrounddev/demo-docs:master
+        TARGET_ROOT: docs/
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
