@@ -11,18 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    
-    - name: Generate Docs
-      run: |
-        cp README.md demo-docs-source.md
 
     - name: Publish to Docs Site
       uses: adrianjost/files-sync-action@v1.4.1
       with:
         COMMIT_MESSAGE: Update Docs
         FILE_PATTERNS: |
-          ^demo-docs-source.md$
+          ^README.md$
         TARGET_REPOS: |
           playgrounddev/demo-docs:master
-        TARGET_ROOT: docs/
+        TARGET_ROOT: docs/demo-docs-source
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
