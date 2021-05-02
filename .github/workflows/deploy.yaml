@@ -20,7 +20,7 @@ jobs:
     - name: Publish to Docs Site
       uses: seanmiddleditch/gha-publish-to-git@master
       with:
-        repository: playgrounddev/demo-docs
+        repository: https://github.com/playgrounddev/demo-docs
         branch: master
         github_pat: "${{ secrets.TOKEN  }}"
         source_folder: tmp/
