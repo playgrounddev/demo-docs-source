@@ -14,15 +14,15 @@ jobs:
     
     - name: Generate Docs
       run: |
-        mkdir ./tmp
-        cp README.md ./tmp/README.md
+        cp README.md GENERATE_README.md
 
     - name: Publish to Docs Site
-      uses: seanmiddleditch/gha-publish-to-git@master
+      uses: adrianjost/files-sync-action@v1.0.1
       with:
-        repository: https://github.com/playgrounddev/demo-docs
-        branch: master
-        github_pat: "${{ secrets.TOKEN  }}"
-        source_folder: tmp/
-        target_folder: docs/demo-docs-source
-      if: success() && github.event == 'push'
+        COMMIT_MESSAGE: Update Docs
+        FILE_PATTERNS: |
+          ^GENERATE_README.*
+        TARGET_REPOS: |
+          playgrounddev/demo-docs
+        TARGET_ROOT: /docs/demo-docs-source/
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
